@@ -20,7 +20,7 @@ struct TableViewCellViewModel {
 
 struct Parser {
     
-    func getAPI(){
+    func getAPI(comp: @escaping ([Cat])->()){
         
         let headers = ["x-api-key": "a56ce6a7-1d1b-43c7-ade0-4685a3b37298"]
 
@@ -37,6 +37,7 @@ struct Parser {
             
             do {
                 let response = try JSONDecoder().decode([Cat].self, from: data)
+                comp(response)
                 print("SUCCESS: \(response)")
             }
             

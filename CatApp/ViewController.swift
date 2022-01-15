@@ -10,8 +10,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource {
     
     var models = [Cat]()
-    
-    let parser = Parser()
+    let parse = Parser()
     
     private let tableView: UITableView = {
         let table = UITableView()
@@ -21,11 +20,45 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        parser.getAPI()
+        parse.getAPI {
+            data in
+            self.models = data
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
 //        configureModels()
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.frame = view.bounds
+    }
+    
+    func fetch(){
+        
+        let headers = ["x-api-key": "a56ce6a7-1d1b-43c7-ade0-4685a3b37298"]
+
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api.thecatapi.com/v1/breeds?limit=20")! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            
+            guard let data = data, error == nil else {return}
+            
+            do {
+                let response = try JSONDecoder().decode([Cat].self, from: data)
+                print("SUCCESS: \(response)")
+            }
+            
+            catch {
+                print(String(describing: error))
+            }
+        })
+
+        dataTask.resume()
     }
 //    
 //    private func configureModels() {
