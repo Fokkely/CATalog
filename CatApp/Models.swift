@@ -16,8 +16,8 @@ struct Cat: Codable {
     let name: String
     let image: Image?
     
-    init(breed: String, image: Image?) {
-        self.name = breed
+    init(name: String, image: Image?) {
+        self.name = name
         self.image = image
     }
 }

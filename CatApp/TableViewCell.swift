@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class TableViewCell: UITableViewCell {
 
     static let identifier = "TableViewCell"
@@ -36,7 +37,7 @@ class TableViewCell: UITableViewCell {
     }
     
     func configure(with viewModel: TableViewCellViewModel) {
-        breedLabel.text = viewModel.breed
+        breedLabel.text = viewModel.name
         catBreedImageView.image = viewModel.image
     }
     

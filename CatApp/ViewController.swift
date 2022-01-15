@@ -21,26 +21,20 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        parser.parse {
-            data in
-            self.models = data
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+        parser.getAPI()
 //        configureModels()
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.frame = view.bounds
     }
-    
+//    
 //    private func configureModels() {
 //        let breeds = [" American Bobtail", " Abyssian", " Devon Rex"]
 //        for breed in breeds {
 //            models.append(Cat(breed: breed, image: nil))
 //        }
 //    }
-//
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }

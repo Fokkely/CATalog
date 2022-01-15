@@ -9,30 +9,43 @@ import Foundation
 import UIKit
 
 struct TableViewCellViewModel {
-    let breed: String
+    let name: String
     let image: UIImage?
     
     init(with model: Cat) {
-        breed = model.name
+        name = model.name
         image = UIImage(systemName: "person")
     }
 }
 
 struct Parser {
     
-    func parse(comp: @escaping ([Cat])->()) {
+    func getAPI(){
         
-        guard let api = URL(string: "https://api.thecatapi.com/v1/breeds") else {return}
-        var request = URLRequest(url: api)
-        request.addValue("a56ce6a7-1d1b-43c7-ade0-4685a3b3729", forHTTPHeaderField: "TRN-Api-Key")
-        URLSession.shared.dataTask(with: api) {
-            (data, response, error) in
+        let headers = ["x-api-key": "a56ce6a7-1d1b-43c7-ade0-4685a3b37298"]
+
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api.thecatapi.com/v1/breeds?limit=20")! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            
+            guard let data = data, error == nil else {return}
+            
             do {
-                let result = try JSONDecoder().decode(Array.self, from: data ?? Data())
-                comp(result.modules)
-            } catch {
+                let response = try JSONDecoder().decode([Cat].self, from: data)
+                print("SUCCESS: \(response)")
+            }
+            
+            catch {
                 print(String(describing: error))
             }
-        }.resume()
+        })
+
+        dataTask.resume()
     }
+
 }
