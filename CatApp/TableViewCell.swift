@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 
 class TableViewCell: UITableViewCell {
@@ -24,6 +25,10 @@ class TableViewCell: UITableViewCell {
         label.textColor = .label
         return label
     }()
+    
+    func typeset() {
+        
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -14,7 +14,7 @@ struct TableViewCellViewModel {
     
     init(with model: Cat) {
         name = model.name
-        image = UIImage(systemName: "person")
+        image = Parser().getImage(from: model.image?.url ?? " ")
     }
 }
 
@@ -49,4 +49,24 @@ struct Parser {
         dataTask.resume()
     }
 
+    
+    func getImage(from string: String) -> UIImage? {
+        guard let url = URL(string: string)
+            else {
+                print("Unable to create URL")
+                return UIImage(systemName: "powprint.fill")
+        }
+
+        var image: UIImage? = nil
+        do {
+            let data = try Data(contentsOf: url, options: [])
+            image = UIImage(data: data)
+        }
+        catch {
+            print(String(describing: error))
+        }
+
+        return image
+    }
 }
+

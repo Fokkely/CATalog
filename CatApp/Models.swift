@@ -7,10 +7,6 @@
 
 import Foundation
 
-struct Array: Codable {
-    let modules: [Cat]
-}
-
 struct Cat: Codable {
     
     let name: String
