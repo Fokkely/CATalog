@@ -10,6 +10,8 @@
 		85B99E06583FD805246620C9 /* libPods-CatApp-CatAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D97451487078E2CFCE246C /* libPods-CatApp-CatAppUITests.a */; };
 		B097991156939F56C9E291C8 /* libPods-CatApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 386365D2CD15E51EB08646FB /* libPods-CatApp.a */; };
 		E1F2B74517276A94C63A190A /* libPods-CatAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E402C2445B96B1115B20CC1F /* libPods-CatAppTests.a */; };
+		FB0AEF5227984EC400EA664E /* CatInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0AEF5127984EC400EA664E /* CatInfoViewController.swift */; };
+		FB0AEF542798683900EA664E /* CatInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0AEF532798683900EA664E /* CatInfoViewModel.swift */; };
 		FB19593F2791E87C0093F764 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB19593E2791E87C0093F764 /* AppDelegate.swift */; };
 		FB1959412791E87C0093F764 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1959402791E87C0093F764 /* SceneDelegate.swift */; };
 		FB1959432791E87C0093F764 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1959422791E87C0093F764 /* ViewController.swift */; };
@@ -51,6 +53,8 @@
 		948F62FA384C63ABFC6631F3 /* Pods-CatApp-CatAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatApp-CatAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-CatApp-CatAppUITests/Pods-CatApp-CatAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9D97451487078E2CFCE246C /* libPods-CatApp-CatAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CatApp-CatAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E402C2445B96B1115B20CC1F /* libPods-CatAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CatAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB0AEF5127984EC400EA664E /* CatInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatInfoViewController.swift; sourceTree = "<group>"; };
+		FB0AEF532798683900EA664E /* CatInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatInfoViewModel.swift; sourceTree = "<group>"; };
 		FB19593B2791E87C0093F764 /* CatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB19593E2791E87C0093F764 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB1959402791E87C0093F764 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,7 +121,6 @@
 				5C3FFC4947777442ECF14FF7 /* Pods-CatAppTests.debug.xcconfig */,
 				93F96C71F8B02E17D9AEBD24 /* Pods-CatAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -149,6 +152,8 @@
 				FB1959702791FC500093F764 /* TableViewCell.swift */,
 				FB1959722791FF280093F764 /* TableViewCellViewModel.swift */,
 				FB1959422791E87C0093F764 /* ViewController.swift */,
+				FB0AEF532798683900EA664E /* CatInfoViewModel.swift */,
+				FB0AEF5127984EC400EA664E /* CatInfoViewController.swift */,
 				FB19596E2791FBEC0093F764 /* Models.swift */,
 				FB19593E2791E87C0093F764 /* AppDelegate.swift */,
 				FB1959402791E87C0093F764 /* SceneDelegate.swift */,
@@ -380,6 +385,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB0AEF5227984EC400EA664E /* CatInfoViewController.swift in Sources */,
+				FB0AEF542798683900EA664E /* CatInfoViewModel.swift in Sources */,
 				FB1959732791FF280093F764 /* TableViewCellViewModel.swift in Sources */,
 				FB1959712791FC500093F764 /* TableViewCell.swift in Sources */,
 				FB1959432791E87C0093F764 /* ViewController.swift in Sources */,

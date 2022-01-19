@@ -11,10 +11,18 @@ struct Cat: Codable {
     
     let name: String
     let image: Image?
+    let description: String
+    let life_span: String
+    let temperament: String
+    let alt_names: String?
     
-    init(name: String, image: Image?) {
+    init(name: String, image: Image?,description: String, life_span: String, temperament: String, alt_names: String?) {
         self.name = name
         self.image = image
+        self.description = description
+        self.life_span = life_span
+        self.temperament = temperament
+        self.alt_names = alt_names
     }
 }
 

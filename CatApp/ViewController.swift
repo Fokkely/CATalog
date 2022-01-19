@@ -29,7 +29,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         view.addSubview(tableView)
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.frame = view.bounds
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let vc = CatInfoViewController(catInfo: models[indexPath.row])
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,10 +52,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         cell.configure(with: TableViewCellViewModel(with: models[indexPath.row]))
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

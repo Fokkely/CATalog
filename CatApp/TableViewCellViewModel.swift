@@ -24,7 +24,7 @@ struct Parser {
         
         let headers = ["x-api-key": "a56ce6a7-1d1b-43c7-ade0-4685a3b37298"]
 
-        let request = NSMutableURLRequest(url: NSURL(string: "https://api.thecatapi.com/v1/breeds?limit=20")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api.thecatapi.com/v1/breeds?limit=32")! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
         request.httpMethod = "GET"
@@ -54,7 +54,7 @@ struct Parser {
         guard let url = URL(string: string)
             else {
                 print("Unable to create URL")
-                return UIImage(systemName: "powprint.fill")
+                return UIImage(systemName: "pawprint.fill")
         }
 
         var image: UIImage? = nil
