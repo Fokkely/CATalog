@@ -7,9 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    private var models = [Cat]()
+    var models = [Cat]()
+    let parse = Parser()
     
     private let tableView: UITableView = {
         let table = UITableView()
@@ -19,34 +20,38 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureModels()
+        parse.getAPI {
+            data in
+            self.models = data
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
         view.addSubview(tableView)
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.frame = view.bounds
     }
     
-    private func configureModels() {
-        let breeds = [" American Bobtail", " Abyssian", "Devon Rex"]
-        for breed in breeds {
-            models.append(Cat(breed: breed, image: nil))
-        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let vc = CatInfoViewController(catInfo: models[indexPath.row])
+        navigationController?.pushViewController(vc, animated: true)
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = models[indexPath.row]
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: TableViewCell.identifier,
             for: indexPath
         ) as? TableViewCell else {return UITableViewCell()}
         
-        cell.configure(with: TableViewCellViewModel(with: model))
+        cell.configure(with: TableViewCellViewModel(with: models[indexPath.row]))
         return cell
     }
-
-
 }
 
