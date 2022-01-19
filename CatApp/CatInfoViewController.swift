@@ -119,7 +119,7 @@ class CatInfoViewController: UIViewController {
         super.viewDidLoad()
 
         configure(with: CatInfoViewModel(with: catInfo))
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.systemBackground
         typeset()
         
     }
